@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: Practice_01
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/practice_01
+server:
+  port: 8181
+jwt:
+  secret: vj9O9w4BGGT76KjD0yNtizXoHfAgCGvqXoRllYt7zu1bXTwVOBqfiod1T3OXw5dOFmWT0sUWpEFqE2JbFgJvUZ
+  expiration:  86400000
+#springdoc:
+#  swagger-ui:
+#    operations-sorter: alpha
+#    try-it-out-enabled: true
+#  api-docs:
+#    resolve-schema-properties: true
+#  show-actuator: false
+#  default-flat-param-object: true
+#  default-produces-media-type: application/json
+#  default-consumes-media-type: application/json

@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:11.4
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: task_1234
+      POSTGRES_USER: rady
+      POSTGRES_DB: postgres
+
+
+    ports:
+      - '33334:5432'
+
+
+    volumes:
+      - my-db:/var/lib/pos
+volumes:
+  my-db:
