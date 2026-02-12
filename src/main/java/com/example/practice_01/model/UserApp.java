@@ -2,6 +2,7 @@ package com.example.practice_01.model;
 
 import com.example.practice_01.common.Provider;
 import com.example.practice_01.common.Role;
+import com.example.practice_01.payload.dto.UserDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,5 +40,8 @@ public class UserApp {
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+    public UserDto toDto(){
+        return new UserDto(this.id,this.fullName,this.role);
     }
    }

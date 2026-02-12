@@ -8,7 +8,6 @@ import com.example.practice_01.model.UserApp;
 import com.example.practice_01.payload.request.UserLogin;
 import com.example.practice_01.payload.request.UserRequest;
 import com.example.practice_01.payload.response.UserLoginResponse;
-import com.example.practice_01.payload.response.UserResponse;
 import com.example.practice_01.repository.AuthRepository;
 import com.example.practice_01.service.AuthService;
 import org.springframework.context.annotation.Lazy;
@@ -16,9 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class AuthServiceImp implements AuthService {
@@ -31,13 +28,6 @@ public class AuthServiceImp implements AuthService {
         this.jwtUtils = jwtUtils;
         this.passwordEncoder = passwordEncoder;
     }
-
-    @Override
-    public List<UserResponse> getAllUsers() {
-        List<UserApp> users = authRepository.findAll();
-        return users.stream().map(UserResponse::fromEntity).collect(Collectors.toList());
-    }
-
     @Transactional
 
     public UserLoginResponse registerUser(UserRequest userRequest) {
@@ -88,6 +78,7 @@ public class AuthServiceImp implements AuthService {
         user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         user.setPhoneNumber(userRequest.getPhoneNumber().startsWith("0") ?
                 userRequest.getPhoneNumber() : "0" + userRequest.getPhoneNumber());
+        user.setRole(userRequest.getRole());
         user.setGmail(userRequest.getGmail());
         user.setProvider(userRequest.getProvider());
         user.setCreatedDate(userRequest.getCreatedDate());
@@ -96,12 +87,11 @@ public class AuthServiceImp implements AuthService {
     }
     private UserLoginResponse buildUserRegisterResponse(UserApp user) {
         UserLoginResponse response = new UserLoginResponse();
-//        response.setTelegramVerify(telegramBotRepository.findByChatId(user.getChatId()).isPresent());
         response.setId(user.getId());
-//        response.setProfileImage(Optional.ofNullable(user.getProfileImage()).orElse(""));
         response.setFullName(user.getFullName());
         response.setGmail(user.getGmail());
         response.setPhoneNumber(user.getPhoneNumber());
+        response.setRole(user.getRole());
         response.setProvider(user.getProvider());
         response.setToken(jwtUtils.generateToken(user));
         response.setCreatedDate(user.getCreatedDate());
