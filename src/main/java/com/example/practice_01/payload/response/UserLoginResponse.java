@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 @Data
@@ -14,13 +15,15 @@ import java.time.ZonedDateTime;
 public class UserLoginResponse {
     private String id;
     private String fullName;
+    private String username;
+    private String userProfile;
     private String token;
     private String gmail;
     private String phoneNumber;
     private Role role;
     private Provider provider;
-    private String createdDate;
-    private String modifiedDate;
-    private String loginTime;
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
+    private LocalDateTime loginTime;
 
 }

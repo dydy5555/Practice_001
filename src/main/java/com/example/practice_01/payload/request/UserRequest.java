@@ -7,13 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.ZonedDateTime;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserRequest {
     private String fullName;
+    private String username;
+    private String userProfile;
     private String gmail;
     private String phoneNumber;
     private Role role;

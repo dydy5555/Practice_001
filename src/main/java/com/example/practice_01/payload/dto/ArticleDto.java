@@ -13,5 +13,5 @@ public class ArticleDto {
     private String id;
     private String title;
     private String description;
-    private UserDto user;
+    private UserDto creator;
 }

@@ -29,6 +29,7 @@ public class JwtUtils implements Serializable {
         Map<String, Object> claims = new HashMap<>();
         claims.put("id",user.getId());
         claims.put("phoneNumber", user.getPhoneNumber());
+        claims.put("username", user.getUsername());
         claims.put("gmail", user.getGmail());
         claims.put("provider", user.getProvider());
 
@@ -55,6 +56,11 @@ public class JwtUtils implements Serializable {
     public String getPhoneNumberFromToken(String token) {
         Claims claims = getAllClaimsFromToken(token);
         return claims.get("phoneNumber", String.class);
+    }
+
+    public String getUsernameFromToken(String token){
+        Claims claims = getAllClaimsFromToken(token);
+        return  claims.get("username", String.class);
     }
 
     public String getProviderFromToken(String token) {

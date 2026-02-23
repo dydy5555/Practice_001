@@ -5,10 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class UserLogin {
-    //username or gmail
-    private String username;
-    private String password;
+@NoArgsConstructor
+public class UserModify {
+    private String phoneNumber;
+    private String userProfile;
+    private String fullName;
 }

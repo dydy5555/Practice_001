@@ -10,8 +10,11 @@ import java.util.Optional;
 @Repository
 public interface AuthRepository extends MongoRepository<UserApp, String> {
     Optional<UserApp> findByPhoneNumberAndProvider(String phoneNumber, Provider provider);
+    Optional<UserApp> findByUsernameAndProvider(String username, Provider provider);
     Optional<UserApp> findByGmailAndProvider(String gmail, Provider provider);
     boolean existsByGmailAndProvider(String gmail, Provider provider);
     boolean existsByPhoneNumberAndProvider(String phoneNumber, Provider provider);
+    boolean existsByUsernameAndProvider(String username, Provider provider);
+
 
 }

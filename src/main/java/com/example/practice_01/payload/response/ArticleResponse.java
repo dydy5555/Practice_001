@@ -11,19 +11,19 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ArticleResponse {
     private String id;
     private String title;
     private String description;
-    private UserApp user;
+    private UserResponse creatorId;
 
-    public static ArticleResponse toRes(Article article){
-        return new ArticleResponse(
-                article.getId(),
-                article.getTitle(),
-                article.getDescription(),
-                article.getUser()
-
-        );
+    public static ArticleResponse toRes(Article article, UserResponse user) {
+        return ArticleResponse.builder()
+                .id(article.getId())
+                .title(article.getTitle())
+                .description(article.getDescription())
+                .creatorId(user)
+                .build();
     }
 }

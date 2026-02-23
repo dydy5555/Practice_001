@@ -6,6 +6,8 @@ spring:
       uri: mongodb://localhost:27017/practice_01
 server:
   port: 8181
+file:
+  upload-Path: C:\Users\LENOVO\Desktop\spring\practice_01\src\main\resources\static
 jwt:
   secret: vj9O9w4BGGT76KjD0yNtizXoHfAgCGvqXoRllYt7zu1bXTwVOBqfiod1T3OXw5dOFmWT0sUWpEFqE2JbFgJvUZ
   expiration:  86400000

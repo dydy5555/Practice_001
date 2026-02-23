@@ -61,6 +61,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             final String authHeader = request.getHeader("Authorization");
             String gmail = null;
             String phoneNumber = null;
+            String username = null;
             String provider = null;
             String token = null;
             if (authHeader != null && authHeader.startsWith("Bearer ")) {
@@ -68,6 +69,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 try {
                     gmail = jwtUtils.getGmailFromToken(token);
                     phoneNumber = jwtUtils.getPhoneNumberFromToken(token);
+                    username = jwtUtils.getUsernameFromToken(token);
                     provider = jwtUtils.getProviderFromToken(token);
                 } catch (IllegalArgumentException | ExpiredJwtException e) {
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

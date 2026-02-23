@@ -4,6 +4,7 @@ import com.example.practice_01.payload.dto.ArticleDto;
 import com.example.practice_01.payload.request.ArticleRequest;
 import com.example.practice_01.payload.response.ApiResponse;
 import com.example.practice_01.payload.response.ArticleResponse;
+import com.example.practice_01.payload.response.UserLoginResponse;
 import com.example.practice_01.service.ArticleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,5 +25,11 @@ public class ArticleController {
     public ResponseEntity<List<ArticleResponse>> getAllArticles(){
         List<ArticleResponse> articles = articleService.getAllArticles();
         return ResponseEntity.ok(articles);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<ArticleResponse> createArticle(@RequestBody ArticleRequest articleRequest){
+        ArticleResponse newArticle = articleService.createArticle(articleRequest);
+        return ResponseEntity.ok(newArticle);
     }
 }

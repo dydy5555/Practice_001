@@ -19,7 +19,7 @@ public class GlobalException extends ResponseEntityExceptionHandler {
     public ResponseEntity<CustomErrorResponse> handleNotFoundException(NotFoundExceptionClass exception) {
         CustomErrorResponse errorResponse = new CustomErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
-                "Not Found",
+                "not Found",
                 exception.getMessage(),
                 LocalDateTime.now()
         );
@@ -35,5 +35,29 @@ public class GlobalException extends ResponseEntityExceptionHandler {
                 LocalDateTime.now()
         );
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
+    }
+
+    @ExceptionHandler(NullExceptionClass.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<CustomErrorResponse> handleNotFoundException(NullExceptionClass exception) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "can not be null",
+                exception.getMessage(),
+                LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    @ExceptionHandler(InvalidExceptionClass.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<CustomErrorResponse> handleNotFoundException(InvalidExceptionClass exception) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "invalid",
+                exception.getMessage(),
+                LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 }

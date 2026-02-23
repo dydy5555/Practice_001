@@ -17,5 +17,5 @@ public class Article {
     private String id;
     private String title;
     private String description;
-    private UserApp user;
+    private String creatorId;
 }
